@@ -1,0 +1,9 @@
+llama-index-core>=0.10.0
+openai
+langchain
+sentence-transformers
+llama-index-embeddings-huggingface
+llama-index-retrievers-bm25
+llama-index-readers-file
+llama-index-readers-web
+trafilatura
