@@ -1,3 +1,36 @@
+"""
+Test suite for RAG System Integration.
+
+This test suite verifies the end-to-end functionality of the RAG system, ensuring that
+all components work together correctly. It tests the complete workflow from document
+ingestion through query processing, validating the system's overall behavior.
+
+Key Components Tested:
+    - Document Processing Pipeline
+    - Embedding Generation System
+    - Index Creation and Management
+    - Query Processing and Response Generation
+    - Component Integration and Communication
+    
+Test Environment:
+    - Uses mock LLM to avoid API calls
+    - Tests with controlled document set
+    - Verifies cross-component interaction
+    - Uses temporary test storage
+    
+Dependencies:
+    - RAGPipeline: Core pipeline orchestration
+    - IndexManager: Document storage and retrieval
+    - EmbeddingManager: Vector embeddings
+    - DocumentProcessor: Text processing
+    - ContentHandler: Raw content processing
+    
+Performance Considerations:
+    - Full system initialization overhead
+    - Cross-component communication latency
+    - Resource cleanup requirements
+"""
+
 import unittest
 import logging
 import os
@@ -9,34 +42,49 @@ from src.documents.document_processor import DocumentProcessor
 from src.content.content_handler import ContentHandler
 from llama_index.core import Document, Settings
 
-"""
-Integration Tests for the RAG (Retrieval-Augmented Generation) System
-
-This test suite verifies that all components of the system work together correctly.
-It tests the complete workflow from document creation to query processing.
-
-Components tested:
-- Document Processing
-- Embedding Generation
-- Index Creation and Storage
-- RAG Pipeline Query Processing
-"""
-
-# Set up logging to track what's happening during tests
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class TestIntegration(unittest.TestCase):
+    """
+    Integration test cases for the complete RAG system.
+    
+    This test class verifies that all system components can work together
+    harmoniously, testing the complete workflow from document ingestion
+    to query response generation.
+    
+    Key Integration Points:
+        - Document processing to embedding generation
+        - Embedding storage and retrieval
+        - Query processing and context generation
+        - Response synthesis and formatting
+        
+    Test Prerequisites:
+        - All component dependencies available
+        - Sufficient system resources
+        - Temporary storage permissions
+    """
+    
     def setUp(self):
         """
-        Set up the test environment before each test.
-        This method is called before every test method.
+        Test setup method that runs before each test.
         
-        Initializes:
-        - RAG Pipeline: Manages the retrieval and generation process
-        - Index Manager: Handles document indexing and storage
-        - Embedding Manager: Creates vector embeddings for documents
-        - Document Processor: Processes raw text into document objects
+        Sets up:
+            1. Mock LLM configuration
+            2. Test storage environment
+            3. All system components
+            4. Integration test configuration
+            
+        Components Initialized:
+            - RAG Pipeline
+            - Index Manager
+            - Embedding Manager
+            - Document Processor
+            
+        Note:
+            Creates a clean test environment for each test case
+            to ensure isolation and reproducibility.
         """
         logger.info("Setting up integration test...")
         
@@ -64,17 +112,30 @@ class TestIntegration(unittest.TestCase):
         
     def test_full_workflow(self):
         """
-        Tests the complete workflow of the RAG system.
+        Test complete system workflow integration.
         
-        Steps tested:
-        1. Create documents from raw text
-        2. Add embeddings to documents
-        3. Create and save an index
-        4. Initialize the RAG pipeline
-        5. Run a query through the pipeline
-        
-        This test ensures that all components can work together
-        to process documents and answer queries.
+        This test verifies the entire RAG system workflow:
+            1. Document Creation and Processing
+            2. Embedding Generation and Storage
+            3. Index Creation and Management
+            4. Query Processing and Response
+            
+        Test Flow:
+            1. Create test documents
+            2. Process and embed documents
+            3. Create searchable index
+            4. Initialize RAG pipeline
+            5. Process test queries
+            
+        Validation Points:
+            - Document processing accuracy
+            - Embedding quality
+            - Index functionality
+            - Query response relevance
+            
+        Note:
+            This is a comprehensive test that exercises all major
+            system components in sequence.
         """
         # Step 1: Create sample documents with specific test content
         raw_texts = [
@@ -143,13 +204,17 @@ class TestIntegration(unittest.TestCase):
 
     def tearDown(self):
         """
-        Clean up after each test.
-        This method is called after every test method.
+        Cleanup method that runs after each test.
         
-        Cleanup tasks:
-        1. Remove the test storage directory and all its contents
-        2. Clear any cached data in the managers
-        3. Log all cleanup operations
+        Performs:
+            1. Pipeline shutdown
+            2. Index cleanup
+            3. Storage directory removal
+            4. Resource deallocation
+            
+        Note:
+            Ensures complete cleanup of all test artifacts and
+            resources to prevent test interference.
         """
         logger.info("Starting cleanup process...")
         
