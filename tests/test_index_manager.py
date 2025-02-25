@@ -27,6 +27,7 @@ from llama_index.core import Document, Settings
 from llama_index.core.response_synthesizers import get_response_synthesizer
 from llama_index.core.retrievers import VectorIndexRetriever
 import logging
+import unittest
 
 logger = logging.getLogger(__name__)
 

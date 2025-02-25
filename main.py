@@ -37,7 +37,7 @@ from src.pipeline.rag_pipeline import RAGPipeline
 from src.index.index_manager import IndexManager
 from src.embeddings.embedding_manager import EmbeddingManager
 from src.documents.document_processor import DocumentProcessor
-from src.llm.llm_service import LLMService  # TODO: Import the LLMService
+# TODO for Students: You will need to implement and import the LLMService
 from llama_index.core import Document, Settings
 
 # Configure logging
@@ -194,13 +194,10 @@ def main():
         
         # Example documents
         # TODO for Students: Add more texts to create a larger index
-        # Hint: You can use ChatGPT to generate synthetic data about various topics.
-        # For example, ask it to generate paragraphs about:
-        # - Programming concepts
-        # - Software development methodologies
-        # - Computer science fundamentals
-        # - Technology trends
-        # This will help create a more diverse and comprehensive knowledge base.
+        # Hint: You can use ChatGPT to generate synthetic data. Try these prompts:
+        # - "Generate 5 paragraphs about different Python programming concepts"
+        # - "Write 3 detailed paragraphs about software testing methodologies"
+        # - "Explain object-oriented programming principles in 4 paragraphs"
         # 
         # The more varied and numerous the texts, the better the RAG system will perform.
         # Aim for at least 10-15 different texts covering various aspects of your topics.
@@ -211,18 +208,17 @@ def main():
             # Add more texts here...
         ]
         
-        # Process documents
-        # This step creates an index from all the documents above
-        # The index is what enables efficient semantic search
+        # Process documents and create the searchable index
+        # This step vectorizes all documents and creates an efficient search structure
         index = rag_system.process_documents(raw_texts)
         
-        # Example queries
+        # Example queries to test the system
         # TODO for Students: Add more diverse queries to test your system
-        # Try to create queries that:
-        # - Ask about specific information
-        # - Request comparisons
-        # - Ask for explanations
-        # - Seek examples or use cases
+        # Try queries that:
+        # - Ask about specific information: "What are Python's main features?"
+        # - Request comparisons: "Compare unit testing and integration testing"
+        # - Ask for explanations: "Explain how Python handles memory management"
+        # - Seek examples: "Give examples of Python use cases in data science"
         test_queries = [
             "What is Python used for?",
             "Why is testing important?"
@@ -230,13 +226,13 @@ def main():
         ]
         
         # Process each query in sequence
-        # For each query, we:
-        # 1. Get relevant documents using RAG
-        # 2. Log the RAG results
-        # 3. Process these results with the LLM
-        # 4. Log the LLM's response
+        # The system will:
+        # 1. Use RAG to find relevant documents for each query
+        # 2. Show the retrieved documents (RAG results)
+        # 3. Process these results with the LLM to generate a final answer
+        # 4. Display both RAG results and the LLM's response for comparison
         for query in test_queries:
-            # First, get relevant documents using RAG
+            # Get relevant documents using RAG
             results = rag_system.query_documents(index, query)
             logger.info(f"\nQuery: {query}")
             logger.info("RAG Results:")
@@ -244,9 +240,10 @@ def main():
                 logger.info(f"Result {i + 1}: {result[:100]}...")
             
             # TODO for Students: Process results with LLM
+            # Implement the LLM processing here:
             # 1. Call process_with_llm with the RAG results and query
-            # 2. Log the LLM's response
-            # Example structure:
+            # 2. Log the LLM's response to see the final generated answer
+            # Example:
             # llm_response = process_with_llm(results, query)
             # logger.info(f"\nLLM Response: {llm_response}")
                 

@@ -109,5 +109,58 @@ Replace `test_module` with the name of the test file (without the `.py` extensio
 python -m unittest tests.test_document_processor.TestDocumentProcessor.test_create_documents
 ```
 
+## 📝 Student Tasks
+### 1. LLM Service Implementation
+You need to implement the LLM integration in the system. The main tasks are:
+
+1. **Implement the LLMService Class** (`src/llm/llm_service.py`):
+   - Complete the `generate_response` method to communicate with Azure-hosted LLM
+   - Implement `create_context` to combine RAG results into a coherent context
+   - Develop `prompt_engineering` to create effective prompts for the LLM
+
+2. **Update Main Application** (`main.py`):
+   - Import and initialize the LLMService
+   - Complete the `process_with_llm` function to use LLMService methods
+   - Test the implementation with various queries
+
+3. **Enhance the Knowledge Base**:
+   - Add more diverse texts to `raw_texts` in `main.py`
+   - Use ChatGPT to generate synthetic data about:
+     - Python programming concepts
+     - Software testing methodologies
+     - Object-oriented programming principles
+   - Aim for 10-15 different texts
+
+4. **Test with Diverse Queries**:
+   - Add various types of questions to test the system:
+     - Specific information queries
+     - Comparison requests
+     - Explanation requests
+     - Example requests
+
+### Implementation Tips
+1. **Context Creation**:
+   - Consider how to effectively combine multiple documents
+   - Maintain relevance to the query
+   - Handle potential length limitations
+
+2. **Prompt Engineering**:
+   - Include clear instructions for the LLM
+   - Structure the context and query appropriately
+   - Consider adding examples or templates
+
+3. **Error Handling**:
+   - Implement robust error handling
+   - Consider edge cases
+   - Add appropriate logging
+
+### Evaluation Criteria
+Your implementation will be evaluated based on:
+1. Code quality and organization
+2. Effective use of the LLM API
+3. Robustness of error handling
+4. Quality of generated responses
+5. Diversity and quality of added test data
+
 
 
