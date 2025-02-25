@@ -23,12 +23,14 @@ The system is organized into several key components:
    - 🔍 Embedding: Convert text into numerical vectors
    - 💾 Indexing: Save and load searchable indexes
 
-graph TD
+```mermaid
+graph LR
     A[Ingestion] --> B[Document Processing]
     B --> C[Embedding]
     C --> D[Indexing]
     D --> E[Search]
     E --> F[Answer]
+```
 
 Each component has a specific role:
 1. **Content Handler**: Gets text from PDFs and websites
