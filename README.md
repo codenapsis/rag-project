@@ -51,7 +51,7 @@ Before you begin, ensure you have the following installed:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your_username/rag-project.git
+   git clone https://github.com/codenapsis/rag-project.git
    cd rag-project
    ```
 
