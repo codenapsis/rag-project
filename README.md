@@ -111,7 +111,22 @@ python -m unittest tests.test_document_processor.TestDocumentProcessor.test_crea
 
 ## 📝 Student Tasks
 
-### 1. Query Processing Implementation
+### 1. Document Processing Implementation
+You need to implement the document processing functionality in the system. The main tasks are:
+
+1. **Implement the `process_documents` Method** (`main.py`):
+   - Create Document objects from raw texts
+   - Add embeddings to the documents
+   - Create and save the searchable index
+   - Log the process appropriately
+   - Return the index for later use
+
+2. **Test the Document Processing**:
+   - Verify that your implementation correctly processes documents
+   - Test with various text inputs
+   - Ensure the index is properly created and saved
+
+### 2. Query Processing Implementation
 You need to implement the query processing functionality in the system. The main tasks are:
 
 1. **Implement the `query_documents` Method** (`main.py`):
@@ -125,7 +140,7 @@ You need to implement the query processing functionality in the system. The main
    - Test with various query types
    - Ensure proper logging of results
 
-### 2. LLM Service Implementation
+### 3. LLM Service Implementation
 You need to implement the LLM integration in the system. The main tasks are:
 
 1. **Implement the LLMService Class** (`src/llm/llm_service.py`):
@@ -154,22 +169,27 @@ You need to implement the LLM integration in the system. The main tasks are:
      - Example requests
 
 ### Implementation Tips
-1. **RAG Pipeline Integration**:
+1. **Document Processing**:
+   - Understand how documents are structured and processed
+   - Consider how embeddings enhance document searchability
+   - Think about efficient index creation for larger document sets
+
+2. **RAG Pipeline Integration**:
    - Understand how the pipeline connects to the index
    - Ensure proper initialization and configuration
    - Consider performance implications for larger document sets
 
-2. **Context Creation**:
+3. **Context Creation**:
    - Consider how to effectively combine multiple documents
    - Maintain relevance to the query
    - Handle potential length limitations
 
-3. **Prompt Engineering**:
+4. **Prompt Engineering**:
    - Include clear instructions for the LLM
    - Structure the context and query appropriately
    - Consider adding examples or templates
 
-4. **Error Handling**:
+5. **Error Handling**:
    - Implement robust error handling
    - Consider edge cases
    - Add appropriate logging
@@ -177,11 +197,12 @@ You need to implement the LLM integration in the system. The main tasks are:
 ### Evaluation Criteria
 Your implementation will be evaluated based on:
 1. Code quality and organization
-2. Correct implementation of the RAG pipeline
-3. Effective use of the LLM API
-4. Robustness of error handling
-5. Quality of generated responses
-6. Diversity and quality of added test data
+2. Correct implementation of document processing
+3. Correct implementation of the RAG pipeline
+4. Effective use of the LLM API
+5. Robustness of error handling
+6. Quality of generated responses
+7. Diversity and quality of added test data
 
 
 

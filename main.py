@@ -33,11 +33,12 @@ TODO for Students:
 import logging
 import os
 import shutil
-# TODO for Students: You will need to import the RAGPipeline
-from src.index.index_manager import IndexManager
-from src.embeddings.embedding_manager import EmbeddingManager
-from src.documents.document_processor import DocumentProcessor
-# TODO for Students: You will need to implement and import the LLMService
+# TODO for Students: You will need to import the necessary components
+# RAGPipeline
+# IndexManager
+# EmbeddingManager
+# DocumentProcessor
+# LLMService
 from llama_index.core import Document, Settings
 
 # Configure logging
@@ -71,13 +72,15 @@ class RAGSystem:
         if not os.path.exists(storage_path):
             os.makedirs(storage_path)
             
-        # TODO for Students: Initialize the RAG Pipeline
-        # self.rag_pipeline = RAGPipeline()
+        # TODO for Students: Initialize the system components
+        # 1. Initialize the RAG Pipeline
+        # self.rag_pipeline = 
         
-        self.index_manager = IndexManager(storage_path)
-        self.embedding_manager = EmbeddingManager()
-        self.document_processor = DocumentProcessor()
-        self.embed_model = self.embedding_manager.load_embedding_model()
+        # 2. Initialize the document processing components
+        # self.index_manager = 
+        # self.embedding_manager = 
+        # self.document_processor = 
+        # self.embed_model = 
         
         logger.info("All components initialized")
         
@@ -90,25 +93,34 @@ class RAGSystem:
             
         Returns:
             Index: Searchable document index
+        
+        TODO for Students:
+        1. Create Document objects from raw texts
+           - Use self.document_processor.create_documents(raw_texts) to convert texts to Document objects
+        
+        2. Add embeddings to the documents
+           - Use self.document_processor.batch_add_embeddings(self.embed_model, documents)
+           - This adds vector representations to each document
+        
+        3. Create and save the index
+           - Use self.index_manager.create_index(documents, self.embed_model)
+           - Then save the index with self.index_manager.save_index()
+        
+        4. Log the process
+           - Log the number of documents created and when the index is saved
+        
+        5. Return the index
+           - Return the created index for later use in queries
+        
+        Optional Enhancements:
+        - Error handling: Consider adding try/except blocks for document processing
+        - Chunking: For very large documents, consider implementing chunking
+        - Metadata: Add metadata to documents for better filtering
+        
+        Note: This function should process the raw texts into an indexed, searchable format.
+        The document processor and index manager handle most of the complexity.
         """
-        logger.info(f"Processing {len(raw_texts)} documents")
-        
-        # Create Document objects
-        documents = self.document_processor.create_documents(raw_texts)
-        logger.info(f"Created {len(documents)} Document objects")
-        
-        # Add embeddings
-        documents = self.document_processor.batch_add_embeddings(
-            self.embed_model, documents
-        )
-        logger.info("Added embeddings to documents")
-        
-        # Create and save index
-        index = self.index_manager.create_index(documents, self.embed_model)
-        self.index_manager.save_index()
-        logger.info(f"Index created and saved to: {self.storage_path}")
-        
-        return index
+        pass
         
     def query_documents(self, index, query):
         """
