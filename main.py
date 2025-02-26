@@ -96,26 +96,28 @@ class RAGSystem:
         
         TODO for Students:
         1. Create Document objects from raw texts
-           - Use self.document_processor.create_documents(raw_texts) to convert texts to Document objects
+           - Use the document processor to convert the raw texts into Document objects
+           - The document processor has a method for creating documents from text
         
         2. Add embeddings to the documents
-           - Use self.document_processor.batch_add_embeddings(self.embed_model, documents)
-           - This adds vector representations to each document
+           - Documents need vector representations (embeddings) to be searchable
+           - The document processor can add embeddings in batch mode using your embedding model
         
         3. Create and save the index
-           - Use self.index_manager.create_index(documents, self.embed_model)
-           - Then save the index with self.index_manager.save_index()
+           - Use the index manager to create a searchable index from your documents
+           - Don't forget to save the index for persistence
         
         4. Log the process
-           - Log the number of documents created and when the index is saved
+           - Log important information like the number of documents processed
+           - Include when the index is created and saved
         
         5. Return the index
-           - Return the created index for later use in queries
+           - The index will be needed later for querying
         
         Optional Enhancements:
-        - Error handling: Consider adding try/except blocks for document processing
-        - Chunking: For very large documents, consider implementing chunking
-        - Metadata: Add metadata to documents for better filtering
+        - Error handling: What happens if document processing fails?
+        - Chunking: How would you handle very large documents?
+        - Metadata: Consider adding metadata to improve document filtering
         
         Note: This function should process the raw texts into an indexed, searchable format.
         The document processor and index manager handle most of the complexity.
@@ -135,22 +137,22 @@ class RAGSystem:
         
         TODO for Students:
         1. Initialize the RAG Pipeline if not already done
-           - If self.rag_pipeline doesn't exist yet, create it with: self.rag_pipeline = RAGPipeline()
-           - Then use self.rag_pipeline.initialize_pipeline(index) to set up the pipeline with the index
+           - Check if you already have a pipeline instance
+           - If not, create one and initialize it with your index
         
         2. Run the query through the pipeline
-           - Use self.rag_pipeline.run_pipeline(query) to get relevant documents
+           - The pipeline has a method to process queries and return relevant documents
         
         3. Log the results
-           - Log how many results were found using logger.info
+           - Log useful information about the search results
         
         4. Return the results
            - Return the list of relevant document texts
         
         Optional Enhancements:
-        - Error handling: Consider adding try/except blocks to handle potential errors
-        - Logging: You could log a preview of each result (first 100 characters)
-        - Edge cases: Consider what happens if no results are found or if the query is empty
+        - Error handling: What if the pipeline fails?
+        - Logging: Consider logging previews of the results
+        - Edge cases: How would you handle empty queries or no results?
         
         Note: This function should connect the pipeline to the index and run the query.
         The RAG pipeline handles the search logic.
