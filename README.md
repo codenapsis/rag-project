@@ -110,7 +110,22 @@ python -m unittest tests.test_document_processor.TestDocumentProcessor.test_crea
 ```
 
 ## 📝 Student Tasks
-### 1. LLM Service Implementation
+
+### 1. Query Processing Implementation
+You need to implement the query processing functionality in the system. The main tasks are:
+
+1. **Implement the `query_documents` Method** (`main.py`):
+   - Initialize the RAG Pipeline if not already done
+   - Process queries against the document index
+   - Log and return relevant documents
+   - Consider implementing error handling and edge cases
+
+2. **Test the Query Processing**:
+   - Verify that your implementation correctly retrieves relevant documents
+   - Test with various query types
+   - Ensure proper logging of results
+
+### 2. LLM Service Implementation
 You need to implement the LLM integration in the system. The main tasks are:
 
 1. **Implement the LLMService Class** (`src/llm/llm_service.py`):
@@ -139,17 +154,22 @@ You need to implement the LLM integration in the system. The main tasks are:
      - Example requests
 
 ### Implementation Tips
-1. **Context Creation**:
+1. **RAG Pipeline Integration**:
+   - Understand how the pipeline connects to the index
+   - Ensure proper initialization and configuration
+   - Consider performance implications for larger document sets
+
+2. **Context Creation**:
    - Consider how to effectively combine multiple documents
    - Maintain relevance to the query
    - Handle potential length limitations
 
-2. **Prompt Engineering**:
+3. **Prompt Engineering**:
    - Include clear instructions for the LLM
    - Structure the context and query appropriately
    - Consider adding examples or templates
 
-3. **Error Handling**:
+4. **Error Handling**:
    - Implement robust error handling
    - Consider edge cases
    - Add appropriate logging
@@ -157,10 +177,11 @@ You need to implement the LLM integration in the system. The main tasks are:
 ### Evaluation Criteria
 Your implementation will be evaluated based on:
 1. Code quality and organization
-2. Effective use of the LLM API
-3. Robustness of error handling
-4. Quality of generated responses
-5. Diversity and quality of added test data
+2. Correct implementation of the RAG pipeline
+3. Effective use of the LLM API
+4. Robustness of error handling
+5. Quality of generated responses
+6. Diversity and quality of added test data
 
 
 

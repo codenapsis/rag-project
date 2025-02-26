@@ -33,7 +33,7 @@ TODO for Students:
 import logging
 import os
 import shutil
-from src.pipeline.rag_pipeline import RAGPipeline
+# TODO for Students: You will need to import the RAGPipeline
 from src.index.index_manager import IndexManager
 from src.embeddings.embedding_manager import EmbeddingManager
 from src.documents.document_processor import DocumentProcessor
@@ -71,7 +71,9 @@ class RAGSystem:
         if not os.path.exists(storage_path):
             os.makedirs(storage_path)
             
-        self.rag_pipeline = RAGPipeline()
+        # TODO for Students: Initialize the RAG Pipeline
+        # self.rag_pipeline = RAGPipeline()
+        
         self.index_manager = IndexManager(storage_path)
         self.embedding_manager = EmbeddingManager()
         self.document_processor = DocumentProcessor()
@@ -118,14 +120,30 @@ class RAGSystem:
             
         Returns:
             List[str]: Query results
+        
+        TODO for Students:
+        1. Initialize the RAG Pipeline if not already done
+           - If self.rag_pipeline doesn't exist yet, create it with: self.rag_pipeline = RAGPipeline()
+           - Then use self.rag_pipeline.initialize_pipeline(index) to set up the pipeline with the index
+        
+        2. Run the query through the pipeline
+           - Use self.rag_pipeline.run_pipeline(query) to get relevant documents
+        
+        3. Log the results
+           - Log how many results were found using logger.info
+        
+        4. Return the results
+           - Return the list of relevant document texts
+        
+        Optional Enhancements:
+        - Error handling: Consider adding try/except blocks to handle potential errors
+        - Logging: You could log a preview of each result (first 100 characters)
+        - Edge cases: Consider what happens if no results are found or if the query is empty
+        
+        Note: This function should connect the pipeline to the index and run the query.
+        The RAG pipeline handles the search logic.
         """
-        logger.info(f"Processing query: {query}")
-        
-        self.rag_pipeline.initialize_pipeline(index)
-        results = self.rag_pipeline.run_pipeline(query)
-        
-        logger.info(f"Retrieved {len(results)} results")
-        return results
+        pass
 
 def process_with_llm(results: list, query: str):
     """
