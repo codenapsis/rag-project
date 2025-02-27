@@ -1,5 +1,5 @@
 from typing import List
-from langchain_core.documents import Document
+from llama_index.core import Document
 from llama_index.readers.file import PDFReader
 from llama_index.readers.web import TrafilaturaWebReader
 import logging

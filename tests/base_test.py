@@ -90,7 +90,7 @@ class BaseTest(unittest.TestCase):
         
         # Set up common test paths
         cls.TEST_STORAGE_PATH = "test_storage"
-        cls.TEST_PDF_PATH = os.path.join(os.getcwd(), "pdfs", "test.pdf")
+        cls.TEST_PDF_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "src", "pdfs", "carrotbc.pdf")
         cls.TEST_URLS = ["http://example.com"]
         
     def setUp(self):
