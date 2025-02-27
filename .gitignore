@@ -1,5 +1,5 @@
 # Virtual environments
-venv/
+venv*/
 .env/
 __pycache__/
 *.pyc
@@ -12,3 +12,9 @@ __pycache__/
 .pytest_cache/
 .tox/
 coverage.*
+
+# Data directory - exclude all contents
+data/
+
+# Any folder starting with venv
+venv*/

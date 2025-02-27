@@ -44,7 +44,7 @@ Each component has a specific role:
 
 ### Prerequisites
 Before you begin, ensure you have the following installed:
-- Python 3.7 or higher
+- Python 3.9 or higher (optimized for Python 3.12)
 - pip (Python package manager)
 - Internet access (for downloading models and dependencies)
 

@@ -68,21 +68,37 @@ class BaseTest(unittest.TestCase):
         needs_storage = True     # If storage is required
     """
     
+    TEST_PDF_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "src", "pdfs", "carrotbc.pdf")
+    TEST_STORAGE_PATH = "test_storage"
+    TEST_URLS = ["https://python.org"]
+    
     @classmethod
     def setUpClass(cls):
         """
-        Class-level setup that runs once before all tests.
+        Class-level setup that runs once before any tests.
         
-        Configures:
-            1. Global test settings
-            2. LLM configuration (disabled)
-            3. Standard test paths
-            4. Common test data
+        Performs:
+            1. Global test environment configuration
+            2. Shared resource initialization
+            3. Test storage preparation
+            
+        Features:
+            - Embedding model initialization (if needed)
+            - Storage directory creation (if needed)
+            - Test environment validation
             
         Note:
-            This method runs once per test class, not per test method.
-            Use for expensive setup operations that can be shared across tests.
+            This method runs once per test class.
+            Use for expensive setup operations shared across tests.
         """
+        logger.info(f"Setting up test class: {cls.__name__}")
+        
+        # Check if PDF test file exists and log its status
+        if os.path.exists(cls.TEST_PDF_PATH):
+            logger.info(f"Test PDF file found at {cls.TEST_PDF_PATH}")
+        else:
+            logger.warning(f"Test PDF file not found at {cls.TEST_PDF_PATH}")
+        
         # Configure basic settings
         Settings.llm = None
         Settings.context_window = 2048
@@ -90,7 +106,6 @@ class BaseTest(unittest.TestCase):
         
         # Set up common test paths
         cls.TEST_STORAGE_PATH = "test_storage"
-        cls.TEST_PDF_PATH = os.path.join(os.getcwd(), "pdfs", "test.pdf")
         cls.TEST_URLS = ["http://example.com"]
         
     def setUp(self):
