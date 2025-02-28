@@ -5,12 +5,6 @@ from llama_index.retrievers.bm25 import BM25Retriever
 from llama_index.core.base.base_query_engine import BaseQueryEngine
 from src.utils.error_handler import handle_exceptions, RAGError
 
-# Configuración más agresiva para deshabilitar barras de progreso
-import tqdm.notebook
-import tqdm.std
-tqdm.notebook.tqdm = lambda *args, **kwargs: args[0]
-tqdm.std.tqdm = lambda *args, **kwargs: args[0]
-
 logger = logging.getLogger(__name__)
 
 class RAGPipeline:
