@@ -66,6 +66,14 @@ Before you begin, ensure you have the following installed:
    pip install -r requirements.txt
    ```
 
+### Important Notes for First-Time Setup
+When running the project for the first time, the system will download the necessary models from Hugging Face. This process:
+- May take some time depending on your internet connection
+- Will disable progress bars to prevent terminal display issues
+- Will cache the models locally for future use
+
+If you encounter any issues during the first run, please see the Troubleshooting section below.
+
 ### Usage
 To run the main application, use the following command:
 ```bash
@@ -161,6 +169,36 @@ Your implementation will be evaluated based on:
 3. Robustness of error handling
 4. Quality of generated responses
 5. Diversity and quality of added test data
+
+## 🔧 Troubleshooting
+
+### Common Issues and Solutions
+
+#### BM25Retriever Import Error
+If you encounter an import error related to BM25Retriever, ensure you have installed the correct package:
+```bash
+pip install llama-index-retrievers-bm25
+```
+The system is designed to handle different import paths automatically.
+
+#### Hugging Face Model Loading Issues
+If you encounter issues with loading Hugging Face models:
+1. Ensure you have a stable internet connection
+2. The system automatically disables progress bars which can cause issues in some environments
+3. If problems persist, try manually downloading the model:
+   ```bash
+   python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-mpnet-base-v2')"
+   ```
+
+#### Package Version Conflicts
+If you encounter package version conflicts:
+1. Create a fresh virtual environment
+2. Install the dependencies with the exact versions specified in requirements.txt:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+If you continue to experience issues, please open an issue on the repository with details about your environment and the specific error messages.
 
 
 

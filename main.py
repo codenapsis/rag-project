@@ -30,8 +30,27 @@ TODO for Students:
        - generate_response: Get the final response from the LLM
 """
 
-import logging
 import os
+import logging
+import sys
+from pathlib import Path
+
+# Set environment variables to disable progress bars
+os.environ["TQDM_DISABLE"] = "1"
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+logger = logging.getLogger(__name__)
+
+# Fix tqdm configuration
+import tqdm
+tqdm.tqdm.disable = True
+
 import shutil
 from src.pipeline.rag_pipeline import RAGPipeline
 from src.index.index_manager import IndexManager
@@ -39,10 +58,6 @@ from src.embeddings.embedding_manager import EmbeddingManager
 from src.documents.document_processor import DocumentProcessor
 # TODO for Students: You will need to implement and import the LLMService
 from llama_index.core import Document, Settings
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 class RAGSystem:
     """

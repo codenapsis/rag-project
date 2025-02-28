@@ -1,15 +1,27 @@
 from typing import Dict, Any, List
 import logging
 import sys
-from llama_index.retrievers.bm25 import BM25Retriever
+import os
+
+# Set environment variables to disable progress bars
+os.environ["TQDM_DISABLE"] = "1"
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+
+# Fix tqdm configuration
+import tqdm
+tqdm.tqdm.disable = True
+
+# Try different import paths for BM25Retriever
+try:
+    from llama_index.retrievers.bm25 import BM25Retriever
+except ImportError:
+    try:
+        from llama_index_retrievers_bm25 import BM25Retriever
+    except ImportError:
+        raise ImportError("Could not import BM25Retriever. Please install llama-index-retrievers-bm25 package.")
+
 from llama_index.core.base.base_query_engine import BaseQueryEngine
 from src.utils.error_handler import handle_exceptions, RAGError
-
-# Configuración más agresiva para deshabilitar barras de progreso
-import tqdm.notebook
-import tqdm.std
-tqdm.notebook.tqdm = lambda *args, **kwargs: args[0]
-tqdm.std.tqdm = lambda *args, **kwargs: args[0]
 
 logger = logging.getLogger(__name__)
 

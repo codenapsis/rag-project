@@ -3,7 +3,16 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core.embeddings import BaseEmbedding
 from typing import Optional
 import logging
+import os
 from src.utils.error_handler import handle_exceptions, EmbeddingError
+
+# Set environment variables to disable progress bars
+os.environ["TQDM_DISABLE"] = "1"
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+
+# Fix tqdm configuration
+import tqdm
+tqdm.tqdm.disable = True
 
 logger = logging.getLogger(__name__)
 
