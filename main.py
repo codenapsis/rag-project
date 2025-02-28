@@ -35,10 +35,6 @@ import logging
 import sys
 from pathlib import Path
 
-# Set environment variables to disable progress bars
-os.environ["TQDM_DISABLE"] = "1"
-os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
-
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -46,10 +42,6 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger(__name__)
-
-# Fix tqdm configuration
-import tqdm
-tqdm.tqdm.disable = True
 
 import shutil
 from src.pipeline.rag_pipeline import RAGPipeline

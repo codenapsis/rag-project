@@ -44,7 +44,7 @@ Each component has a specific role:
 
 ### Prerequisites
 Before you begin, ensure you have the following installed:
-- Python 3.9 or higher (optimized for Python 3.12)
+- Python 3.12.9 (the last available version)
 - pip (Python package manager)
 - Internet access (for downloading models and dependencies)
 
@@ -57,7 +57,7 @@ Before you begin, ensure you have the following installed:
 
 2. Create a virtual environment (optional but recommended):
    ```bash
-   python -m venv venv
+   python3.12 -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
