@@ -16,7 +16,7 @@ System Components:
     - IndexManager: Document storage and retrieval
     - EmbeddingManager: Vector embeddings
     - DocumentProcessor: Text processing
-    - LLMService: Response generation using Azure-hosted LLM
+    - LLMService: Response generation using IONOS-hosted LLM
     
 Usage:
     python main.py
@@ -28,6 +28,9 @@ TODO for Students:
        - create_context: Convert the retrieved documents into a context string
        - prompt_engineering: Create a well-structured prompt
        - generate_response: Get the final response from the LLM
+    3. Initialize the LLMService class
+       - This will be your interface to the IONOS-hosted LLM
+       - Research LlamaIndex alternatives for connecting to non-OpenAI LLMs
 """
 
 import logging
@@ -178,7 +181,8 @@ def process_with_llm(results: list, query: str):
     
     TODO for Students:
     1. Initialize the LLMService class
-       - This will be your interface to the Azure-hosted LLM
+       - This will be your interface to the IONOS-hosted LLM
+       - Research LlamaIndex alternatives for connecting to non-OpenAI LLMs
     
     2. Use the LLMService methods in the following order:
        a. create_context(results):

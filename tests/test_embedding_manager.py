@@ -118,7 +118,7 @@ class TestEmbeddingManager(BaseTest):
         embeddings = self.embedding_manager.get_embeddings(texts)
         self.assertIsNotNone(embeddings)
         self.assertTrue(len(embeddings) > 0)
-        # Podríamos añadir más verificaciones:
-        # - Verificar dimensiones específicas
-        # - Comprobar rango de valores
-        # - Verificar consistencia entre ejecuciones 
+        # We could add more verifications:
+        # - Verify specific dimensions
+        # - Check value ranges
+        # - Verify consistency between executions 
