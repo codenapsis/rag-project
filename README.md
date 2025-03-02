@@ -129,9 +129,10 @@ You need to implement the query processing functionality in the system. The main
 You need to implement the LLM integration in the system. The main tasks are:
 
 1. **Implement the LLMService Class** (`src/llm/llm_service.py`):
-   - Complete the `generate_response` method to communicate with Azure-hosted LLM
+   - Complete the `generate_response` method to communicate with IONOS-hosted LLM
    - Implement `create_context` to combine RAG results into a coherent context
    - Develop `prompt_engineering` to create effective prompts for the LLM
+   - Research LlamaIndex alternatives for connecting to non-OpenAI LLMs
 
 2. **Update Main Application** (`main.py`):
    - Import and initialize the LLMService
