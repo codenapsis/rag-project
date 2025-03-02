@@ -95,6 +95,14 @@ class RAGSystem:
             
         Returns:
             Index: Searchable document index
+        
+        Important:
+            This method calls index_manager.create_index() which always creates a new index
+            and overwrites any existing index in the storage path. Previous documents will be lost.
+            
+            The current implementation does not provide a built-in way to preserve existing documents.
+            If you need this functionality, you would need to extend the IndexManager class to 
+            support adding new documents to an existing index.
         """
         logger.info(f"Processing {len(raw_texts)} documents")
         
@@ -108,7 +116,7 @@ class RAGSystem:
         )
         logger.info("Added embeddings to documents")
         
-        # Create and save index
+        # Create and save index - Note: This overwrites any existing index
         index = self.index_manager.create_index(documents, self.embed_model)
         self.index_manager.save_index()
         logger.info(f"Index created and saved to: {self.storage_path}")

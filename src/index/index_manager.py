@@ -60,14 +60,14 @@ class IndexManager:
 
     def _ensure_document_ids(self, documents: List[Document]) -> List[Document]:
         """
-        Asegura que cada documento tenga un ID único usando la nueva propiedad id_.
+        Ensures each document has a unique ID using the id_ property.
         
-        :param documents: Lista de documentos a procesar
-        :return: Lista de documentos con IDs asignados
+        :param documents: List of documents to process
+        :return: List of documents with assigned IDs
         """
         for doc in documents:
             if not doc.id_:
-                # Crear un hash único basado en el contenido del documento
+                # Create a unique hash based on document content
                 content_hash = hashlib.sha256(doc.text.encode()).hexdigest()[:16]
                 doc.id_ = f"doc_{content_hash}"
                 logger.debug(f"Assigned ID {doc.id_} to document")
